@@ -184,8 +184,8 @@ class AirApi {
         }
     }
 
-    async getHostPerformancData() {
-        if (!this.config.token) {
+    async getHostPerformancData(token) {
+        if (!(token || this.config.token)) {
             log.e("Airbnbapi: Can't get a calendar without a token")
             return null
         }
