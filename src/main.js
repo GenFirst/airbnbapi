@@ -190,9 +190,10 @@ class AirApi {
             return null
         }
 
+        const tokenToBeUsed = token ? token : this.config.token
         const options = this.buildOptions({
             method: 'POST',
-            token: this.config.token,
+            token: tokenToBeUsed,
             route: '/v2/get_host_performance_table_data'
         })
         try {
