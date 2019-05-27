@@ -192,6 +192,26 @@ class AirApi {
         }
     }
 
+    async getHostPerformancData(token) {
+        if (!(token || this.config.token)) {
+            _log2.default.e("Airbnbapi: Can't get a calendar without a token");
+            return null;
+        }
+
+        const options = this.buildOptions({
+            method: 'POST',
+            token: this.config.token,
+            route: '/v2/get_host_performance_table_data'
+        });
+        try {
+            const response = await (0, _requestPromise2.default)(options);
+            return response;
+        } catch (e) {
+            _log2.default.e("Airbnbapi: Couldn't get public calendar for listing  " + id);
+            _log2.default.e(e);
+        }
+    }
+
     //////////// CALENDAR SECTION ////////////
     //////////// CALENDAR SECTION ////////////
     //////////// CALENDAR SECTION ////////////
